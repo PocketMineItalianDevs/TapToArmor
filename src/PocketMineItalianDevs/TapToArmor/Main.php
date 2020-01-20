@@ -61,19 +61,19 @@ class Main extends PluginBase implements Listener{
 		}
 		elseif(in_array($id, self::CHESTPLATE, true)){
 			$copy = $player->getArmorInventory()->getChestplate();
-            $set = $player->getArmorInventory()->setChestplate($armor);
+			$set = $player->getArmorInventory()->setChestplate($armor);
 		}
 		elseif(in_array($id, self::LEGGINGS, true)){
 			$copy = $player->getArmorInventory()->getLeggings();
-            $set = $player->getArmorInventory()->setLeggings($armor);
+			$set = $player->getArmorInventory()->setLeggings($armor);
 		}
 		else{
 			$copy = $player->getArmorInventory()->getBoots();
-            $set = $player->getArmorInventory()->setBoots($armor);
+			$set = $player->getArmorInventory()->setBoots($armor);
 		}
 		if($set){
-            $player->getInventory()->setItemInHand($copy);
-        }
+			$player->getInventory()->setItemInHand($copy);
+		}
 	}
 
 	/**
