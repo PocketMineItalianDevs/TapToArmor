@@ -84,7 +84,7 @@ class Main extends PluginBase implements Listener{
 	 * @ignoreCancelled true
 	 */
 	public function onInteract(PlayerInteractEvent $event){
-		if(($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_AIR or $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) and ($event->getItem() instanceof Armor or $event->getItem()->getId() === Item::ELYTRA)){
+		if(($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_AIR or $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) and ($event->getItem() instanceof Armor or $event->getItem()->getId() === Item::ELYTRA) and $event->getBlock()->getId() !== Block::ITEM_FRAME_BLOCK){
 			$this->setArmorByType($event->getItem(),$event->getPlayer());
 			$event->setCancelled(true);
 		}
