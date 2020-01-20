@@ -1,6 +1,6 @@
 <?php
 
-namespace PocketMineItalianDevs\AutoArmor;
+namespace PocketMineItalianDevs\TapToArmor;
 
 use pocketmine\block\Block;
 use pocketmine\item\Armor;

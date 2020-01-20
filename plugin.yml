@@ -1,6 +1,6 @@
-name: AutoArmor
-main: PocketMineItalianDevs\AutoArmor\Main
+name: TapToArmor
+main: PocketMineItalianDevs\TapToArmor\Main
 version: "1.0.1"
 api: [3.0.0]
-authors: ["RubyTemple","lvca28pet"]
+authors: ["RubyTemple", "luca28pet"]
 description: "equip your armor, vanilla like"
