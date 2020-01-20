@@ -2,6 +2,7 @@
 
 namespace PocketMineItalianDevs\AutoArmor;
 
+use pocketmine\block\Block;
 use pocketmine\item\Armor;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -9,7 +10,6 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use function in_array;
-
 
 class Main extends PluginBase implements Listener{
 
@@ -45,36 +45,35 @@ class Main extends PluginBase implements Listener{
 		Item::DIAMOND_BOOTS,
 	];
 
-	public function onEnable(){
+	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
 	/**
-	 * @param Item   $armor
+	 * @param Item   $armor An Armor or an elytra
 	 * @param Player $player
 	 */
-	public function setArmorByType(Item $armor,Player $player){
+	private function setArmorByType(Item $armor,Player $player) : void{
 		$id = $armor->getId();
-		if(in_array($id,self::HELMET,true)){
+		if(in_array($id, self::HELMET, true)){
 			$copy = $player->getArmorInventory()->getHelmet();
-			$player->getArmorInventory()->setHelmet($armor);
-			$player->getInventory()->setItemInHand($copy);
+			$set = $player->getArmorInventory()->setHelmet($armor);
 		}
-		elseif(in_array($id,self::CHESTPLATE,true)){
+		elseif(in_array($id, self::CHESTPLATE, true)){
 			$copy = $player->getArmorInventory()->getChestplate();
-			$player->getArmorInventory()->setChestplate($armor);
-			$player->getInventory()->setItemInHand($copy);
+            $set = $player->getArmorInventory()->setChestplate($armor);
 		}
-		elseif(in_array($id,self::LEGGINGS,true)){
+		elseif(in_array($id, self::LEGGINGS, true)){
 			$copy = $player->getArmorInventory()->getLeggings();
-			$player->getArmorInventory()->setLeggings($armor);
-			$player->getInventory()->setItemInHand($copy);
+            $set = $player->getArmorInventory()->setLeggings($armor);
 		}
 		else{
 			$copy = $player->getArmorInventory()->getBoots();
-			$player->getArmorInventory()->setBoots($armor);
-			$player->getInventory()->setItemInHand($copy);
+            $set = $player->getArmorInventory()->setBoots($armor);
 		}
+		if($set){
+            $player->getInventory()->setItemInHand($copy);
+        }
 	}
 
 	/**
@@ -83,9 +82,9 @@ class Main extends PluginBase implements Listener{
 	 * @priority HIGHEST
 	 * @ignoreCancelled true
 	 */
-	public function onInteract(PlayerInteractEvent $event){
+	public function onInteract(PlayerInteractEvent $event) : void{
 		if(($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_AIR or $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) and ($event->getItem() instanceof Armor or $event->getItem()->getId() === Item::ELYTRA) and $event->getBlock()->getId() !== Block::ITEM_FRAME_BLOCK){
-			$this->setArmorByType($event->getItem(),$event->getPlayer());
+			$this->setArmorByType($event->getItem(), $event->getPlayer());
 			$event->setCancelled(true);
 		}
 	}
