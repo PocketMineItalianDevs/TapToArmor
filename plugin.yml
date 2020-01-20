@@ -1,0 +1,6 @@
+name: AutoArmor
+main: PocketMineItalianDevs\AutoArmor\Main
+version: "1.0.0"
+api: [3.0.0]
+authors: ["RubyTemple","lvca28pet"]
+description: "equip your armor, vanilla like"
