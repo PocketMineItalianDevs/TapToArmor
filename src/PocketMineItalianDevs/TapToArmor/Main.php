@@ -67,7 +67,7 @@ class Main extends PluginBase implements Listener{
 			$copy = $player->getArmorInventory()->getLeggings();
 			$set = $player->getArmorInventory()->setLeggings($armor);
 		}
-		else{
+		elseif(in_array($id, self::BOOTS, true)){
 			$copy = $player->getArmorInventory()->getBoots();
 			$set = $player->getArmorInventory()->setBoots($armor);
 		}
@@ -84,7 +84,7 @@ class Main extends PluginBase implements Listener{
 	 */
 	public function onInteract(PlayerInteractEvent $event) : void{
 		if(($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_AIR or $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) and ($event->getItem() instanceof Armor or $event->getItem()->getId() === Item::ELYTRA) and $event->getBlock()->getId() !== Block::ITEM_FRAME_BLOCK){
-			$this->setArmorByType($event->getItem(), $event->getPlayer());
+				$this->setArmorByType($event->getItem(), $event->getPlayer());
 			$event->setCancelled(true);
 		}
 	}
