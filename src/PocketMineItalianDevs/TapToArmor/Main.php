@@ -67,7 +67,7 @@ class Main extends PluginBase implements Listener{
 			$copy = $player->getArmorInventory()->getLeggings();
 			$set = $player->getArmorInventory()->setLeggings($armor);
 		}
-		else{
+		elseif(in_array($id, self::BOOTS, true)){
 			$copy = $player->getArmorInventory()->getBoots();
 			$set = $player->getArmorInventory()->setBoots($armor);
 		}
