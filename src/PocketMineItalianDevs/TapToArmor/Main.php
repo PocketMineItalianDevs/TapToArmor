@@ -71,7 +71,9 @@ class Main extends PluginBase implements Listener{
 			$copy = $player->getArmorInventory()->getBoots();
 			$set = $player->getArmorInventory()->setBoots($armor);
 		}
-		if($set){
+		if(isset($set) and $set){
+		    //if $set is defined, $copy is defined too
+		    /** @var Item $copy */
 			$player->getInventory()->setItemInHand($copy);
 		}
 	}
