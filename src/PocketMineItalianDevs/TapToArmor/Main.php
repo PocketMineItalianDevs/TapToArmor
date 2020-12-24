@@ -55,6 +55,7 @@ class Main extends PluginBase implements Listener{
 	 */
 	private function setArmorByType(Item $armor,Player $player) : void{
 		$id = $armor->getId();
+		$set = false;
 		if(in_array($id, self::HELMET, true)){
 			$copy = $player->getArmorInventory()->getHelmet();
 			$set = $player->getArmorInventory()->setHelmet($armor);
@@ -71,7 +72,7 @@ class Main extends PluginBase implements Listener{
 			$copy = $player->getArmorInventory()->getBoots();
 			$set = $player->getArmorInventory()->setBoots($armor);
 		}
-		if(isset($set) and $set){
+		if($set){
 			//if $set is defined, $copy is defined too
 			/** @var Item $copy */
 			$player->getInventory()->setItemInHand($copy);
