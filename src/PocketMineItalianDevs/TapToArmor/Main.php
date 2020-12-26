@@ -12,7 +12,12 @@ use pocketmine\Player;
 use function in_array;
 
 class Main extends PluginBase implements Listener{
-
+	
+	/** @var int */
+	public const NETHERITE_HELMET = 748;
+	public const NETHERITE_CHESTPLATE = 749;
+	public const NETHERITE_LEGGINGS = 750;
+	public const NETHERITE_BOOTS = 751;
 	/** @var int[] */
 	public const
 		HELMET = [
@@ -21,6 +26,7 @@ class Main extends PluginBase implements Listener{
 		Item::IRON_HELMET,
 		Item::GOLD_HELMET,
 		Item::DIAMOND_HELMET,
+		self::NETHERITE_HELMET,
 	],
 		CHESTPLATE = [
 		Item::LEATHER_CHESTPLATE,
@@ -28,6 +34,7 @@ class Main extends PluginBase implements Listener{
 		Item::IRON_CHESTPLATE,
 		Item::GOLD_CHESTPLATE,
 		Item::DIAMOND_CHESTPLATE,
+		self::NETHERITE_CHESTPLATE,
 		Item::ELYTRA,
 	],
 		LEGGINGS = [
@@ -36,6 +43,7 @@ class Main extends PluginBase implements Listener{
 		Item::IRON_LEGGINGS,
 		Item::GOLD_LEGGINGS,
 		Item::DIAMOND_LEGGINGS,
+		self::NETHERITE_LEGGINGS,
 	],
 		BOOTS = [
 		Item::LEATHER_BOOTS,
@@ -43,6 +51,7 @@ class Main extends PluginBase implements Listener{
 		Item::IRON_BOOTS,
 		Item::GOLD_BOOTS,
 		Item::DIAMOND_BOOTS,
+		self::NETHERITE_BOOTS,
 	];
 
 	public function onEnable() : void{
